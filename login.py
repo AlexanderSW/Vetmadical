@@ -29,15 +29,13 @@ class Login(unittest.TestCase):
         self.driver.get("http://dev.vetmedical.ru/")
         self.driver.implicitly_wait(20)
 
-    def tearDown(self):
-        self.driver.close()
-
     def test_login(self):
         home = HomePage(self.driver)
         result = home.login("Alexander Podobulkin", "210785ap")
-        assert "Alexander Podobulkin" in result.username()
+        assert ("Alexander Podobulkin") in result.username()
 
-
+    def tearDown(self):
+        self.driver.close()
 
 if __name__ == '__main__':
     unittest.main()
